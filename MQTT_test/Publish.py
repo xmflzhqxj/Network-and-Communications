@@ -3,7 +3,7 @@ import time
 import random
 
 # MQTT 브로커 설정
-MQTT_BROKER = "localhost"  # Mosquitto가 실행 중인 PC (현재 PC)
+MQTT_BROKER = "broker.hivemq.com"  # Mosquitto가 실행 중인 PC (현재 PC)
 MQTT_PORT = 1883           # 기본 MQTT 포트
 MQTT_TOPIC = "home/temp"   # 발행할 토픽
 
@@ -27,9 +27,9 @@ try:
         # 발행 결과 확인
         status = result[0]
         if status == mqtt.MQTT_ERR_SUCCESS:
-            print(f"⬆️ Sent: '{message}' to topic '{MQTT_TOPIC}'")
+            print(f"Sent: '{message}' to topic '{MQTT_TOPIC}'")
         else:
-            print(f"❌ Failed to send message (Status: {status})")
+            print(f"Failed to send message (Status: {status})")
 
         time.sleep(1) # 1초 대기
 
@@ -37,4 +37,4 @@ finally:
     # 루프와 연결 종료
     client.loop_stop()
     client.disconnect()
-    print("✅ Publisher disconnected.")
+    print("Publisher disconnected.")
