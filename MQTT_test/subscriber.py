@@ -1,9 +1,9 @@
 import paho.mqtt.client as mqtt
 
 # MQTT 브로커 설정
-MQTT_BROKER = "broker.hivemq.com"  # Mosquitto가 실행 중인 PC (현재 PC)
+MQTT_BROKER = "localhost"  # Mosquitto가 실행 중인 PC (현재 PC)
 MQTT_PORT = 1883           # 기본 MQTT 포트
-MQTT_TOPIC = "home/temp"   # 구독할 토픽
+MQTT_TOPIC = "raspberry/temp_humidity"   # 구독할 토픽
    
 # 브로커 연결 성공 시 호출되는 콜백 함수
 def on_connect(client, userdata, flags, rc):
