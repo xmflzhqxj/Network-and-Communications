@@ -14,7 +14,7 @@ try:
     client.loop_start()  
     
     print("publishing messages...")
-    temp, humi = dth.temperature_humidity_read()
+    temp, humi = dht.temperature_humidity_read()
     message =f"Temperature : {temp}°C, Humidity : {humi}%"
     result = client.publish(MQTT_TOPIC,message)
     
