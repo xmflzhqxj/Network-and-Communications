@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        // [중요] wss:// 프로토콜 사용 및 포트 번호 확인
+        // 라즈베리파이의 실제 IP 주소(192.168.0.22)로 수정됨
+        const socket = new WebSocket('wss://192.168.0.22:8765'); 
+
+        socket.onopen = function(event) {
+            console.log('WSS 연결 성공');
+            socket.send('Hello Raspberry Pi!');
+        };
+
+        socket.onmessage = function(event) {
+            console.log('서버 응답: ' + event.data);
+            // 블로그 내용처럼 이곳에서 받은 데이터를 화면에 동적으로 업데이트할 수 있습니다.
+        };
+
+        socket.onclose = function(event) {
+            console.log('WSS 연결 종료');
+        };
+
+        socket.onerror = function(error) {
+            console.error('WSS 오류 발생: ', error);
+            console.log('힌트: 브라우저 주소창에 https://192.168.0.22:8765 입력 후 경고창을 허용했는지 확인하세요.');
+        };
+    </script>
+</body>
+</html>
